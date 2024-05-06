@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	@font-face {
+		font-family: 'VCR OSD Mono';
+		font-display: swap;
+		src:
+			url(/fonts/VCR_OSD_MONO.ttf) format('.ttf'),
+			url(/fonts/VCR_OSD_MONO.woff) format('woff');
+	}
+}
+
+body {
+	background: black;
+}
