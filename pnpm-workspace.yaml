@@ -1,3 +1,6 @@
+packages:
+  - deploy
+
 allowBuilds:
   esbuild: true
   workerd: true
