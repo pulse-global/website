@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import GridFlashes from '#lib/components/GridFlashes.svelte';
 
 	const company = {
 		name: 'Pulse Global BV',
@@ -51,7 +52,12 @@
 	class="relative isolate flex min-h-dvh flex-col overflow-hidden bg-black font-mono text-primary uppercase"
 >
 	<!-- Backdrop: a faint grid and a glow that slowly breathes across the whole page. -->
-	<div class="hud-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
+	<div class="hud-mask pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+		<div class="hud-grid absolute inset-0"></div>
+	</div>
+	<div class="flash-mask pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+		<GridFlashes />
+	</div>
 	<div class="boot-glow pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
 		<div class="breath absolute inset-0"></div>
 	</div>
@@ -89,12 +95,12 @@
 	</header>
 
 	<main class="relative flex flex-1 flex-col items-center justify-center gap-6 p-6 text-center">
-		<!-- Viewfinder brackets framing the content; they drift outward a few px on each inhale. -->
+		<!-- Viewfinder brackets framing the content; they brighten with each breath. -->
 		<div class="boot-brackets pointer-events-none absolute inset-4 sm:inset-8" aria-hidden="true">
-			<span class="bracket top-0 left-0 border-t border-l" style="--bx: -1; --by: -1"></span>
-			<span class="bracket top-0 right-0 border-t border-r" style="--bx: 1; --by: -1"></span>
-			<span class="bracket bottom-0 left-0 border-b border-l" style="--bx: -1; --by: 1"></span>
-			<span class="bracket right-0 bottom-0 border-r border-b" style="--bx: 1; --by: 1"></span>
+			<span class="bracket top-0 left-0 border-t border-l"></span>
+			<span class="bracket top-0 right-0 border-t border-r"></span>
+			<span class="bracket bottom-0 left-0 border-b border-l"></span>
+			<span class="bracket right-0 bottom-0 border-r border-b"></span>
 		</div>
 
 		<div class="boot-crt">

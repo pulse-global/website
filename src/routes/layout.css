@@ -61,13 +61,45 @@
 		animation: breath-bracket var(--breath) ease-in-out var(--boot) infinite both;
 	}
 
+	.hud-mask {
+		mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black, transparent 80%);
+	}
+
+	/* Wider than the grid's mask, so flashes stay visible further out before they fade. */
+	.flash-mask {
+		mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 40%, transparent 95%);
+	}
+
 	.hud-grid {
 		background-image:
 			linear-gradient(to right, rgb(255 109 4 / 0.06) 1px, transparent 1px),
 			linear-gradient(to bottom, rgb(255 109 4 / 0.06) 1px, transparent 1px);
 		background-size: 48px 48px;
 		background-position: center;
-		mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black, transparent 80%);
+	}
+
+	/* A short bright segment that travels the length of one grid line (see GridFlashes.svelte). */
+	.grid-flash {
+		position: absolute;
+		animation: var(--ms) cubic-bezier(0.4, 0, 0.6, 1) both;
+	}
+	.grid-flash-x {
+		top: 0;
+		left: var(--at);
+		width: 1px;
+		height: var(--len);
+		background: linear-gradient(to bottom, transparent, rgb(255 200 140), transparent);
+		box-shadow: 0 0 8px 1px rgb(255 109 4 / 0.8);
+		animation-name: grid-flash-x;
+	}
+	.grid-flash-y {
+		top: var(--at);
+		left: 0;
+		width: var(--len);
+		height: 1px;
+		background: linear-gradient(to right, transparent, rgb(255 200 140), transparent);
+		box-shadow: 0 0 8px 1px rgb(255 109 4 / 0.8);
+		animation-name: grid-flash-y;
 	}
 
 	.hud-ticks {
@@ -258,11 +290,39 @@
 	0%,
 	100% {
 		opacity: 0.5;
-		transform: none;
 	}
 	40% {
 		opacity: 1;
-		transform: translate(calc(var(--bx) * 6px), calc(var(--by) * 6px));
+	}
+}
+
+@keyframes grid-flash-x {
+	0% {
+		opacity: 0;
+		transform: translateY(calc(var(--len) * -1));
+	}
+	15%,
+	70% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(100vh);
+	}
+}
+
+@keyframes grid-flash-y {
+	0% {
+		opacity: 0;
+		transform: translateX(calc(var(--len) * -1));
+	}
+	15%,
+	70% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(100vw);
 	}
 }
 
