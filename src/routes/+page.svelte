@@ -10,6 +10,11 @@
 		register: 'RPR Ghent, division Ghent'
 	};
 
+	// Link previews and canonical need absolute URLs.
+	const site = 'https://pulse.city';
+	const title = 'Pulse Global';
+	const description = 'Pulse Global BV builds software that keeps the beat, from Ghent, Belgium.';
+
 	// Assembled in the browser only, from reversed pieces and char codes, so neither the HTML nor
 	// the JS bundle contains the address, an @, or the link scheme. Comments and local names are
 	// stripped by the build; only the strings below ship.
@@ -27,11 +32,20 @@
 </script>
 
 <svelte:head>
-	<title>Pulse Global</title>
-	<meta
-		name="description"
-		content="Pulse Global BV builds software that keeps the beat, from Ghent, Belgium."
-	/>
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<link rel="canonical" href="{site}/" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content={title} />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content="{site}/" />
+	<meta property="og:image" content="{site}/og.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content="PULSE: software that keeps the beat" />
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <div class="flex min-h-dvh flex-col bg-black font-mono text-primary uppercase">
