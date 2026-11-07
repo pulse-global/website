@@ -49,9 +49,10 @@
 </svelte:head>
 
 <div class="flex min-h-dvh flex-col bg-black font-mono text-primary uppercase">
+	<img src={bar} alt="" class="block h-2.5 w-full sm:h-3" />
+
 	<main class="flex flex-1 flex-col items-center justify-center gap-4 p-6 text-center">
-		<h1 class="animate-heartbeat text-6xl font-extrabold motion-reduce:animate-none">Pulse</h1>
-		<img src={bar} alt="" class="w-56 max-w-full" />
+		<h1 class="pulse-glow text-6xl font-extrabold">Pulse</h1>
 		<p class="text-sm text-primary/60">Software that keeps the beat</p>
 	</main>
 

@@ -18,31 +18,89 @@
 	--font-mono: 'VCR OSD Mono', ui-monospace, monospace;
 	--font-display: 'VCR OSD Mono', ui-monospace, monospace;
 	--font-body: 'VCR OSD Mono', ui-monospace, monospace;
-
-	--animate-heartbeat: heartbeat 1.4s ease-in-out infinite;
-
-	/* Lub-dub, then rest: two quick beats in the first ~40% of each cycle. */
-	@keyframes heartbeat {
-		0%,
-		40%,
-		100% {
-			text-shadow: 0 0 0 transparent;
-		}
-		10% {
-			text-shadow: 0 0 0.35em rgb(255 109 4 / 0.8);
-		}
-		20% {
-			text-shadow: 0 0 0.12em rgb(255 109 4 / 0.3);
-		}
-		28% {
-			text-shadow: 0 0 0.3em rgb(255 109 4 / 0.65);
-		}
-	}
 }
 
 @layer base {
 	html,
 	body {
 		background: black;
+	}
+}
+
+/*
+ * Wordmark glow: a wide, heavily blurred halo behind the word that swells on a slow double beat
+ * (lub-dub, then a long rest), with a softer text glow riding on top.
+ */
+@layer components {
+	.pulse-glow {
+		position: relative;
+		isolation: isolate;
+		animation: pulse-text 3.2s ease-in-out infinite;
+	}
+
+	.pulse-glow::before {
+		content: '';
+		position: absolute;
+		inset: -1.2em -1.8em;
+		z-index: -1;
+		border-radius: 9999px;
+		background: radial-gradient(closest-side, rgb(255 109 4 / 0.8), rgb(255 109 4 / 0) 100%);
+		filter: blur(3.5rem);
+		opacity: 0.25;
+		transform: scale(0.85);
+		animation: pulse-halo 3.2s ease-in-out infinite;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.pulse-glow,
+		.pulse-glow::before {
+			animation: none;
+		}
+		.pulse-glow::before {
+			opacity: 0.5;
+			transform: none;
+		}
+	}
+}
+
+@keyframes pulse-halo {
+	0%,
+	60%,
+	100% {
+		opacity: 0.25;
+		transform: scale(0.85);
+	}
+	14% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+	26% {
+		opacity: 0.45;
+		transform: scale(0.98);
+	}
+	38% {
+		opacity: 0.85;
+		transform: scale(1.12);
+	}
+}
+
+@keyframes pulse-text {
+	0%,
+	60%,
+	100% {
+		text-shadow: 0 0 0.1em rgb(255 109 4 / 0.15);
+	}
+	14% {
+		text-shadow:
+			0 0 0.15em rgb(255 109 4 / 0.7),
+			0 0 0.6em rgb(255 109 4 / 0.45);
+	}
+	26% {
+		text-shadow: 0 0 0.12em rgb(255 109 4 / 0.3);
+	}
+	38% {
+		text-shadow:
+			0 0 0.15em rgb(255 109 4 / 0.55),
+			0 0 0.5em rgb(255 109 4 / 0.35);
 	}
 }
