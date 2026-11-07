@@ -52,15 +52,23 @@
 >
 	<!-- Backdrop: a faint grid and a glow that slowly breathes across the whole page. -->
 	<div class="hud-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
-	<div class="breath pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
+	<div class="boot-glow pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+		<div class="breath absolute inset-0"></div>
+	</div>
 
 	<!--
 		HUD top edge: a hairline across the page with the Pulse tab (the lip of the old bar) hanging
 		off it as a see-through outlined panel, and a tick scale running out to the right edge.
 	-->
 	<header class="relative h-7 shrink-0" aria-hidden="true">
-		<div class="hud-line absolute inset-x-0 top-0 h-px bg-primary/50"></div>
-		<svg class="absolute top-0 left-4 h-7 w-[232px] sm:left-8" viewBox="0 0 232 28" fill="none">
+		<div class="boot-line absolute inset-x-0 top-0 h-px">
+			<div class="hud-line h-full bg-primary/50"></div>
+		</div>
+		<svg
+			class="boot-panel absolute top-0 left-4 h-7 w-[232px] sm:left-8"
+			viewBox="0 0 232 28"
+			fill="none"
+		>
 			<path
 				d="M0.5 0.5L16 27.5H200L215.5 0.5"
 				class="fill-primary/10 stroke-primary/70"
@@ -69,32 +77,46 @@
 			<path d="M24 23.5H72" class="stroke-primary" stroke-width="2" />
 		</svg>
 		<div
-			class="absolute top-0 left-4 flex h-6 w-[216px] items-center justify-center gap-2 text-[10px] tracking-[0.3em] text-primary/80 sm:left-8"
+			class="boot-panel absolute top-0 left-4 flex h-6 w-[216px] items-center justify-center gap-2 text-[10px] tracking-[0.3em] text-primary/80 sm:left-8"
 		>
 			<span class="breath-dot size-1.5 rounded-full bg-primary"></span>
-			Pulse // Global
+			<span class="boot-type">Pulse // Global</span>
 		</div>
-		<div class="hud-ticks absolute top-0 right-4 h-2 w-[28%] max-w-md sm:right-8 sm:w-[40%]"></div>
-		<div class="absolute top-0 right-4 h-3 w-px bg-primary/70 sm:right-8"></div>
+		<div
+			class="boot-fade hud-ticks absolute top-0 right-4 h-2 w-[28%] max-w-md sm:right-8 sm:w-[40%]"
+		></div>
+		<div class="boot-fade absolute top-0 right-4 h-3 w-px bg-primary/70 sm:right-8"></div>
 	</header>
 
-	<main class="flex flex-1 flex-col items-center justify-center gap-6 p-6 text-center">
-		<h1 class="breath-text text-7xl font-extrabold sm:text-8xl lg:text-9xl">Pulse</h1>
-		<p class="text-sm tracking-[0.25em] text-primary/60 sm:text-base">
+	<main class="relative flex flex-1 flex-col items-center justify-center gap-6 p-6 text-center">
+		<!-- Viewfinder brackets framing the content; they drift outward a few px on each inhale. -->
+		<div class="boot-brackets pointer-events-none absolute inset-4 sm:inset-8" aria-hidden="true">
+			<span class="bracket top-0 left-0 border-t border-l" style="--bx: -1; --by: -1"></span>
+			<span class="bracket top-0 right-0 border-t border-r" style="--bx: 1; --by: -1"></span>
+			<span class="bracket bottom-0 left-0 border-b border-l" style="--bx: -1; --by: 1"></span>
+			<span class="bracket right-0 bottom-0 border-r border-b" style="--bx: 1; --by: 1"></span>
+		</div>
+
+		<div class="boot-crt">
+			<h1 class="breath-text text-7xl font-extrabold sm:text-8xl lg:text-9xl">Pulse</h1>
+		</div>
+		<p class="boot-fade boot-late text-sm tracking-[0.25em] text-primary/60 sm:text-base">
 			Software that keeps the beat
 		</p>
 	</main>
 
 	<footer
-		class="relative mx-4 mb-4 flex flex-col gap-4 border-t border-primary/25 pt-4 text-xs text-primary/60 sm:mx-8 sm:mb-6 sm:flex-row sm:items-end sm:justify-between"
+		class="relative mx-4 mb-4 flex flex-col gap-4 pt-4 text-xs text-primary/60 sm:mx-8 sm:mb-6 sm:flex-row sm:items-end sm:justify-between"
 	>
-		<span class="absolute -top-px left-0 h-2 w-px bg-primary/70" aria-hidden="true"></span>
-		<span class="absolute -top-px right-0 h-2 w-px bg-primary/70" aria-hidden="true"></span>
-		<div class="space-y-1">
+		<div class="boot-line-center absolute inset-x-0 top-0 h-px bg-primary/25" aria-hidden="true">
+			<span class="absolute top-0 left-0 h-2 w-px bg-primary/70"></span>
+			<span class="absolute top-0 right-0 h-2 w-px bg-primary/70"></span>
+		</div>
+		<div class="boot-fade boot-late space-y-1">
 			<p>{company.name} · {company.street}, {company.city}</p>
 			<p>VAT {company.vat} · {company.register}</p>
 		</div>
-		<p class="text-sm text-primary">
+		<p class="boot-fade boot-late text-sm text-primary">
 			{#if reach}
 				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- external link, not a route -->
 				<a class="hover:underline" href={reach.href}>{reach.text}</a>

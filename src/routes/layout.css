@@ -40,17 +40,25 @@
 			transparent 75%
 		);
 		transform-origin: 50% 48%;
-		animation: breath-glow var(--breath) ease-in-out infinite;
+		animation: breath-glow var(--breath) ease-in-out var(--boot) infinite both;
 	}
 
 	.breath-text {
-		animation: breath-text var(--breath) ease-in-out infinite;
+		animation: breath-text var(--breath) ease-in-out var(--boot) infinite both;
 		will-change: transform;
 	}
 
 	.breath-dot,
 	.hud-line {
-		animation: breath-fade var(--breath) ease-in-out infinite;
+		animation: breath-fade var(--breath) ease-in-out var(--boot) infinite both;
+	}
+
+	.bracket {
+		position: absolute;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-color: rgb(255 109 4 / 0.6);
+		animation: breath-bracket var(--breath) ease-in-out var(--boot) infinite both;
 	}
 
 	.hud-grid {
@@ -72,14 +80,149 @@
 		.breath,
 		.breath-text,
 		.breath-dot,
-		.hud-line {
+		.hud-line,
+		.bracket {
 			animation: none;
 		}
 	}
 }
 
+/*
+ * Boot sequence, once per page load (~1.6 s): the top hairline draws in from the left and the footer
+ * rule from the centre, the panel drops in and its label types out, the brackets close in from
+ * the corners, then the wordmark switches on like a CRT (a bright line that opens up, flickers and
+ * settles) and the rest fades in. The breathing starts when it ends (--boot).
+ */
+@layer components {
+	.boot-line {
+		transform-origin: left;
+		animation: boot-draw 0.6s cubic-bezier(0.6, 0, 0.2, 1) both;
+	}
+	.boot-line-center {
+		animation: boot-draw 0.7s cubic-bezier(0.6, 0, 0.2, 1) 0.15s both;
+	}
+	.boot-panel {
+		animation: boot-drop 0.4s ease-out 0.35s both;
+	}
+	.boot-type {
+		animation: boot-type 0.5s steps(15, end) 0.55s both;
+	}
+	.boot-fade {
+		animation: boot-fade 0.5s ease-out 0.6s both;
+	}
+	.boot-late {
+		animation-delay: 1.25s;
+	}
+	.boot-brackets {
+		animation: boot-brackets 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s both;
+	}
+	.boot-crt {
+		animation: boot-crt 0.7s linear 0.75s both;
+	}
+	.boot-glow {
+		animation: boot-fade 1s ease-out 0.9s both;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.boot-line,
+		.boot-line-center,
+		.boot-panel,
+		.boot-type,
+		.boot-fade,
+		.boot-brackets,
+		.boot-crt,
+		.boot-glow {
+			animation: none;
+		}
+	}
+}
+
+@keyframes boot-draw {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@keyframes boot-drop {
+	from {
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes boot-type {
+	from {
+		clip-path: inset(0 100% 0 0);
+	}
+	to {
+		clip-path: inset(0 0 0 0);
+	}
+}
+
+@keyframes boot-fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes boot-brackets {
+	from {
+		opacity: 0;
+		transform: scale(1.08);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* CRT switch-on: a thin bright line, opening to full height, a couple of flickers, then steady. */
+@keyframes boot-crt {
+	0% {
+		opacity: 0;
+		transform: scale(1.3, 0.01);
+		filter: brightness(1.6);
+	}
+	15% {
+		opacity: 1;
+		transform: scale(1.3, 0.01);
+		filter: brightness(1.6);
+	}
+	40% {
+		transform: scale(1, 1);
+		filter: brightness(1.3);
+	}
+	55% {
+		opacity: 0.35;
+	}
+	65% {
+		opacity: 1;
+		filter: brightness(1.15);
+	}
+	75% {
+		opacity: 0.6;
+	}
+	85%,
+	100% {
+		opacity: 1;
+		transform: none;
+		filter: none;
+	}
+}
+
 :root {
 	--breath: 7s;
+	--boot: 1.6s;
 }
 
 @keyframes breath-glow {
@@ -108,6 +251,18 @@
 			0 0 0.12em rgb(255 109 4 / 0.7),
 			0 0 0.6em rgb(255 109 4 / 0.4),
 			0 0 1.6em rgb(255 109 4 / 0.3);
+	}
+}
+
+@keyframes breath-bracket {
+	0%,
+	100% {
+		opacity: 0.5;
+		transform: none;
+	}
+	40% {
+		opacity: 1;
+		transform: translate(calc(var(--bx) * 6px), calc(var(--by) * 6px));
 	}
 }
 
