@@ -74,9 +74,7 @@
 			<span class="breath-dot size-1.5 rounded-full bg-primary"></span>
 			Pulse // Global
 		</div>
-		<div
-			class="hud-ticks absolute top-0 right-4 hidden h-2 w-[40%] max-w-md sm:right-8 sm:block"
-		></div>
+		<div class="hud-ticks absolute top-0 right-4 h-2 w-[28%] max-w-md sm:right-8 sm:w-[40%]"></div>
 		<div class="absolute top-0 right-4 h-3 w-px bg-primary/70 sm:right-8"></div>
 	</header>
 
