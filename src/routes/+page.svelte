@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import bar from '#lib/assets/bar.svg';
 
 	const company = {
 		name: 'Pulse Global BV',
@@ -49,7 +48,24 @@
 </svelte:head>
 
 <div class="flex min-h-dvh flex-col bg-black font-mono text-primary uppercase">
-	<img src={bar} alt="" class="block h-2.5 w-full sm:h-3" />
+	<!--
+		The Pulse bar (pulse_d_1.svg) split in three so it can span the page without stretching:
+		the left end with the lip keeps its drawn size, the plain band in the middle grows, and
+		the bevelled right end caps it at the edge. 1 SVG unit = 1.2px.
+	-->
+	<div class="flex items-start text-primary" aria-hidden="true">
+		<svg class="h-3 w-[126px] shrink-0" viewBox="0 0 105 10" fill="currentColor">
+			<path d="M0 0H105V5.333H104.95L101.823 10H7.645Z" />
+		</svg>
+		<div class="-ml-px h-[6.4px] flex-1 bg-current"></div>
+		<svg
+			class="-ml-px h-[6.4px] w-[4.9px] shrink-0"
+			viewBox="191.915 0 4.085 5.333"
+			fill="currentColor"
+		>
+			<path d="M191.915 0H196V3L191.915 5.333Z" />
+		</svg>
+	</div>
 
 	<main class="flex flex-1 flex-col items-center justify-center gap-4 p-6 text-center">
 		<h1 class="pulse-glow text-6xl font-extrabold">Pulse</h1>
