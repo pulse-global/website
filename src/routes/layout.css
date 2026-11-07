@@ -28,79 +28,90 @@
 }
 
 /*
- * Wordmark glow: a wide, heavily blurred halo behind the word that swells on a slow double beat
- * (lub-dub, then a long rest), with a softer text glow riding on top.
+ * Breathing: one slow cycle (inhale ~40%, exhale ~60%) drives the page-wide glow, the wordmark's
+ * text glow, the HUD hairline and the status dot, so the whole page rises and falls together.
  */
 @layer components {
-	.pulse-glow {
-		position: relative;
-		isolation: isolate;
-		animation: pulse-text 3.2s ease-in-out infinite;
+	.breath {
+		background: radial-gradient(
+			ellipse 60% 55% at 50% 48%,
+			rgb(255 109 4 / 0.32),
+			rgb(255 109 4 / 0.08) 45%,
+			transparent 75%
+		);
+		transform-origin: 50% 48%;
+		animation: breath-glow var(--breath) ease-in-out infinite;
 	}
 
-	.pulse-glow::before {
-		content: '';
-		position: absolute;
-		inset: -1.2em -1.8em;
-		z-index: -1;
-		border-radius: 9999px;
-		background: radial-gradient(closest-side, rgb(255 109 4 / 0.8), rgb(255 109 4 / 0) 100%);
-		filter: blur(3.5rem);
-		opacity: 0.25;
-		transform: scale(0.85);
-		animation: pulse-halo 3.2s ease-in-out infinite;
+	.breath-text {
+		animation: breath-text var(--breath) ease-in-out infinite;
+	}
+
+	.breath-dot,
+	.hud-line {
+		animation: breath-fade var(--breath) ease-in-out infinite;
+	}
+
+	.hud-grid {
+		background-image:
+			linear-gradient(to right, rgb(255 109 4 / 0.06) 1px, transparent 1px),
+			linear-gradient(to bottom, rgb(255 109 4 / 0.06) 1px, transparent 1px);
+		background-size: 48px 48px;
+		background-position: center;
+		mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black, transparent 80%);
+	}
+
+	.hud-ticks {
+		background-image: linear-gradient(to right, rgb(255 109 4 / 0.45) 1px, transparent 1px);
+		background-size: 8px 100%;
+		mask-image: linear-gradient(to right, transparent, black 60%);
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.pulse-glow,
-		.pulse-glow::before {
+		.breath,
+		.breath-text,
+		.breath-dot,
+		.hud-line {
 			animation: none;
-		}
-		.pulse-glow::before {
-			opacity: 0.5;
-			transform: none;
 		}
 	}
 }
 
-@keyframes pulse-halo {
+:root {
+	--breath: 7s;
+}
+
+@keyframes breath-glow {
 	0%,
-	60%,
 	100% {
-		opacity: 0.25;
-		transform: scale(0.85);
-	}
-	14% {
-		opacity: 1;
-		transform: scale(1.2);
-	}
-	26% {
 		opacity: 0.45;
-		transform: scale(0.98);
+		transform: scale(0.92);
 	}
-	38% {
-		opacity: 0.85;
+	40% {
+		opacity: 1;
 		transform: scale(1.12);
 	}
 }
 
-@keyframes pulse-text {
+@keyframes breath-text {
 	0%,
-	60%,
 	100% {
-		text-shadow: 0 0 0.1em rgb(255 109 4 / 0.15);
+		text-shadow: 0 0 0.08em rgb(255 109 4 / 0.25);
 	}
-	14% {
+	40% {
 		text-shadow:
-			0 0 0.15em rgb(255 109 4 / 0.7),
-			0 0 0.6em rgb(255 109 4 / 0.45);
+			0 0 0.12em rgb(255 109 4 / 0.6),
+			0 0 0.5em rgb(255 109 4 / 0.35),
+			0 0 1.2em rgb(255 109 4 / 0.2);
 	}
-	26% {
-		text-shadow: 0 0 0.12em rgb(255 109 4 / 0.3);
+}
+
+@keyframes breath-fade {
+	0%,
+	100% {
+		opacity: 0.45;
 	}
-	38% {
-		text-shadow:
-			0 0 0.15em rgb(255 109 4 / 0.55),
-			0 0 0.5em rgb(255 109 4 / 0.35);
+	40% {
+		opacity: 1;
 	}
 }

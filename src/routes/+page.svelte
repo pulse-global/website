@@ -47,34 +47,51 @@
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="flex min-h-dvh flex-col bg-black font-mono text-primary uppercase">
-	<!--
-		The Pulse bar (pulse_d_1.svg) split in three so it can span the page without stretching:
-		the left end with the lip keeps its drawn size, the plain band in the middle grows, and
-		the bevelled right end caps it at the edge. 1 SVG unit = 1.2px.
-	-->
-	<div class="flex items-start text-primary" aria-hidden="true">
-		<svg class="h-3 w-[126px] shrink-0" viewBox="0 0 105 10" fill="currentColor">
-			<path d="M0 0H105V5.333H104.95L101.823 10H7.645Z" />
-		</svg>
-		<div class="-ml-px h-[6.4px] flex-1 bg-current"></div>
-		<svg
-			class="-ml-px h-[6.4px] w-[4.9px] shrink-0"
-			viewBox="191.915 0 4.085 5.333"
-			fill="currentColor"
-		>
-			<path d="M191.915 0H196V3L191.915 5.333Z" />
-		</svg>
-	</div>
+<div
+	class="relative isolate flex min-h-dvh flex-col overflow-hidden bg-black font-mono text-primary uppercase"
+>
+	<!-- Backdrop: a faint grid and a glow that slowly breathes across the whole page. -->
+	<div class="hud-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
+	<div class="breath pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
 
-	<main class="flex flex-1 flex-col items-center justify-center gap-4 p-6 text-center">
-		<h1 class="pulse-glow text-6xl font-extrabold">Pulse</h1>
-		<p class="text-sm text-primary/60">Software that keeps the beat</p>
+	<!--
+		HUD top edge: a hairline across the page with the Pulse tab (the lip of the old bar) hanging
+		off it as a see-through outlined panel, and a tick scale running out to the right edge.
+	-->
+	<header class="relative h-7 shrink-0" aria-hidden="true">
+		<div class="hud-line absolute inset-x-0 top-0 h-px bg-primary/50"></div>
+		<svg class="absolute top-0 left-4 h-7 w-[232px] sm:left-8" viewBox="0 0 232 28" fill="none">
+			<path
+				d="M0.5 0.5L16 27.5H200L215.5 0.5"
+				class="fill-primary/10 stroke-primary/70"
+				stroke-width="1"
+			/>
+			<path d="M24 23.5H72" class="stroke-primary" stroke-width="2" />
+		</svg>
+		<div
+			class="absolute top-0 left-4 flex h-6 w-[216px] items-center justify-center gap-2 text-[10px] tracking-[0.3em] text-primary/80 sm:left-8"
+		>
+			<span class="breath-dot size-1.5 rounded-full bg-primary"></span>
+			Pulse // Global
+		</div>
+		<div
+			class="hud-ticks absolute top-0 right-4 hidden h-2 w-[40%] max-w-md sm:right-8 sm:block"
+		></div>
+		<div class="absolute top-0 right-4 h-3 w-px bg-primary/70 sm:right-8"></div>
+	</header>
+
+	<main class="flex flex-1 flex-col items-center justify-center gap-6 p-6 text-center">
+		<h1 class="breath-text text-7xl font-extrabold sm:text-8xl lg:text-9xl">Pulse</h1>
+		<p class="text-sm tracking-[0.25em] text-primary/60 sm:text-base">
+			Software that keeps the beat
+		</p>
 	</main>
 
 	<footer
-		class="flex flex-col gap-4 p-6 text-xs text-primary/60 sm:flex-row sm:items-end sm:justify-between"
+		class="relative mx-4 mb-4 flex flex-col gap-4 border-t border-primary/25 pt-4 text-xs text-primary/60 sm:mx-8 sm:mb-6 sm:flex-row sm:items-end sm:justify-between"
 	>
+		<span class="absolute -top-px left-0 h-2 w-px bg-primary/70" aria-hidden="true"></span>
+		<span class="absolute -top-px right-0 h-2 w-px bg-primary/70" aria-hidden="true"></span>
 		<div class="space-y-1">
 			<p>{company.name} · {company.street}, {company.city}</p>
 			<p>VAT {company.vat} · {company.register}</p>
