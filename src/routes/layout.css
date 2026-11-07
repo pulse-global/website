@@ -35,7 +35,7 @@
 	.breath {
 		background: radial-gradient(
 			ellipse 75% 70% at 50% 48%,
-			rgb(255 109 4 / 0.4),
+			rgb(255 109 4 / 0.28),
 			rgb(255 109 4 / 0.2) 40%,
 			transparent 75%
 		);
@@ -45,7 +45,6 @@
 
 	.breath-text {
 		animation: breath-text var(--breath) ease-in-out var(--boot) infinite both;
-		will-change: transform;
 	}
 
 	.breath-dot,
@@ -272,13 +271,11 @@
 @keyframes breath-text {
 	0%,
 	100% {
-		transform: scale(1);
 		text-shadow: 0 0 0.08em rgb(255 109 4 / 0.25);
 	}
 	40% {
 		/* Lighten towards white as the glow peaks so the word stays crisp against it. */
 		color: color-mix(in oklab, var(--color-primary), white 25%);
-		transform: scale(1.06);
 		text-shadow:
 			0 0 0.12em rgb(255 109 4 / 0.7),
 			0 0 0.6em rgb(255 109 4 / 0.4),

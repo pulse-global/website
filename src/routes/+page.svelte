@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import GridFlashes from '#lib/components/GridFlashes.svelte';
 
 	const company = {
 		name: 'Pulse Global BV',
@@ -55,9 +54,10 @@
 	<div class="hud-mask pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
 		<div class="hud-grid absolute inset-0"></div>
 	</div>
+	<!-- Grid flashes (GridFlashes.svelte) are switched off for now; to bring them back:
 	<div class="flash-mask pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
 		<GridFlashes />
-	</div>
+	</div> -->
 	<div class="boot-glow pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
 		<div class="breath absolute inset-0"></div>
 	</div>
