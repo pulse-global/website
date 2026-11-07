@@ -81,7 +81,7 @@
 	/* A short bright segment that travels the length of one grid line (see GridFlashes.svelte). */
 	.grid-flash {
 		position: absolute;
-		animation: var(--ms) cubic-bezier(0.4, 0, 0.6, 1) both;
+		animation: var(--ms) linear both;
 	}
 	.grid-flash-x {
 		top: 0;

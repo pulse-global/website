@@ -26,7 +26,7 @@
 			axis,
 			at,
 			length: 140 + Math.random() * 160,
-			ms: Math.max(900, along * (1.2 + Math.random() * 1.2))
+			ms: Math.max(220, along * (0.3 + Math.random() * 0.3))
 		});
 	}
 
