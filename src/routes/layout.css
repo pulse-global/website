@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+@font-face {
+	font-family: 'VCR OSD Mono';
+	font-display: swap;
+	src:
+		url('/fonts/VCR_OSD_MONO.woff') format('woff'),
+		url('/fonts/VCR_OSD_MONO.ttf') format('truetype');
+}
+
+@theme {
+	--color-primary: #ff6d04;
+	--color-secondary: #00ff00;
+	--color-tertiary: #0000ff;
+
+	--font-sans: 'VCR OSD Mono', ui-monospace, monospace;
+	--font-serif: 'VCR OSD Mono', ui-monospace, monospace;
+	--font-mono: 'VCR OSD Mono', ui-monospace, monospace;
+	--font-display: 'VCR OSD Mono', ui-monospace, monospace;
+	--font-body: 'VCR OSD Mono', ui-monospace, monospace;
+
+	--animate-heartbeat: heartbeat 1.4s ease-in-out infinite;
+
+	/* Lub-dub, then rest: two quick beats in the first ~40% of each cycle. */
+	@keyframes heartbeat {
+		0%,
+		40%,
+		100% {
+			text-shadow: 0 0 0 transparent;
+		}
+		10% {
+			text-shadow: 0 0 0.35em rgb(255 109 4 / 0.8);
+		}
+		20% {
+			text-shadow: 0 0 0.12em rgb(255 109 4 / 0.3);
+		}
+		28% {
+			text-shadow: 0 0 0.3em rgb(255 109 4 / 0.65);
+		}
+	}
+}
+
+@layer base {
+	html,
+	body {
+		background: black;
+	}
+}

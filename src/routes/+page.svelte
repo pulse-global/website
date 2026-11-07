@@ -13,7 +13,7 @@
 	// the JS bundle contains the address, an @, or the link scheme. Comments and local names are
 	// stripped by the build; only the strings below ship.
 	const parts = ['city', 'pulse', 'info'];
-	const fallback = `${parts[2]} [at] ${parts[1]}.${parts[0]}`;
+	const fallback = `${parts[2]}[at]${parts[1]}.${parts[0]}`;
 	let reach = $state<{ href: string; text: string } | null>(null);
 
 	onMount(() => {
@@ -33,107 +33,26 @@
 	/>
 </svelte:head>
 
-<main>
-	<h1>Pulse<span>.</span></h1>
-	<p>Software that keeps the beat.</p>
-</main>
+<div class="flex min-h-dvh flex-col bg-black font-mono text-primary uppercase">
+	<main class="flex flex-1 flex-col items-center justify-center gap-4 p-6 text-center">
+		<h1 class="animate-heartbeat text-6xl font-extrabold motion-reduce:animate-none">Pulse</h1>
+		<p class="text-sm text-primary/60">Software that keeps the beat</p>
+	</main>
 
-<footer>
-	<p>{company.name} · {company.street}, {company.city}</p>
-	<p>VAT {company.vat} · {company.register}</p>
-	<p>
-		{#if reach}
-			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- external link, not a route -->
-			<a href={reach.href}>{reach.text}</a>
-		{:else}
-			{fallback}
-		{/if}
-	</p>
-</footer>
-
-<style>
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding: 2rem 1.5rem;
-		max-width: 64rem;
-		width: 100%;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	h1 {
-		margin: 0;
-		font-size: clamp(4rem, 16vw, 10rem);
-		font-weight: 400;
-		letter-spacing: 0;
-		line-height: 0.9;
-	}
-
-	h1 span {
-		display: inline-block;
-		color: var(--orange);
-		transform-origin: 50% 85%;
-		animation: heartbeat 1.4s ease-in-out infinite;
-	}
-
-	/* Lub-dub, then rest: two quick beats in the first ~40% of each cycle. */
-	@keyframes heartbeat {
-		0%,
-		40%,
-		100% {
-			transform: scale(1);
-			text-shadow: 0 0 0 transparent;
-		}
-		10% {
-			transform: scale(1.18);
-			text-shadow: 0 0 0.35em rgb(255 106 0 / 0.75);
-		}
-		20% {
-			transform: scale(1.02);
-			text-shadow: 0 0 0.15em rgb(255 106 0 / 0.3);
-		}
-		28% {
-			transform: scale(1.12);
-			text-shadow: 0 0 0.3em rgb(255 106 0 / 0.6);
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		h1 span {
-			animation: none;
-			text-shadow: 0 0 0.25em rgb(255 106 0 / 0.5);
-		}
-	}
-
-	main p {
-		margin: 1.5rem 0 0;
-		font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-		color: var(--muted);
-	}
-
-	footer {
-		padding: 1.5rem 0;
-		max-width: 61rem;
-		width: calc(100% - 3rem);
-		margin: 0 auto;
-		border-top: 1px solid #222;
-		font-size: 0.8125rem;
-		color: var(--muted);
-	}
-
-	footer p {
-		margin: 0.25rem 0;
-	}
-
-	footer a {
-		color: var(--orange);
-		text-decoration: none;
-	}
-
-	footer a:hover {
-		text-decoration: underline;
-	}
-</style>
+	<footer
+		class="flex flex-col gap-4 p-6 text-xs text-primary/60 sm:flex-row sm:items-end sm:justify-between"
+	>
+		<div class="space-y-1">
+			<p>{company.name} · {company.street}, {company.city}</p>
+			<p>VAT {company.vat} · {company.register}</p>
+		</div>
+		<p class="text-sm text-primary">
+			{#if reach}
+				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- external link, not a route -->
+				<a class="hover:underline" href={reach.href}>{reach.text}</a>
+			{:else}
+				{fallback}
+			{/if}
+		</p>
+	</footer>
+</div>
