@@ -89,7 +89,7 @@
 			<span class="boot-type">Pulse // Global</span>
 		</div>
 		<div
-			class="boot-fade hud-ticks absolute top-0 right-4 h-2 w-[28%] max-w-md sm:right-8 sm:w-[40%]"
+			class="boot-fade hud-ticks absolute top-0 right-8 h-2 w-[28%] max-w-md sm:right-12 sm:w-[40%]"
 		></div>
 		<div class="boot-fade absolute top-0 right-4 h-3 w-px bg-primary/70 sm:right-8"></div>
 	</header>
