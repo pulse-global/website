@@ -12,7 +12,7 @@
 	// Link previews and canonical need absolute URLs.
 	const site = 'https://pulse.city';
 	const title = 'Pulse Global';
-	const description = 'Pulse Global BV builds software that keeps the beat, from Ghent, Belgium.';
+	const description = 'Pulse Global BV builds software that breathes, from Ghent, Belgium.';
 
 	// Assembled in the browser only, from reversed pieces and char codes, so neither the HTML nor
 	// the JS bundle contains the address, an @, or the link scheme. Comments and local names are
@@ -43,7 +43,7 @@
 	<meta property="og:image" content="{site}/og.png" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
-	<meta property="og:image:alt" content="PULSE: software that keeps the beat" />
+	<meta property="og:image:alt" content="PULSE: software that breathes" />
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
@@ -106,8 +106,8 @@
 		<div class="boot-crt">
 			<h1 class="breath-text text-7xl font-extrabold sm:text-8xl lg:text-9xl">Pulse</h1>
 		</div>
-		<p class="boot-fade boot-late text-sm tracking-[0.25em] text-primary/60 sm:text-base">
-			Software that keeps the beat
+		<p class="boot-fade boot-late text-sm tracking-[0.25em] text-primary/80 sm:text-base">
+			Software that breathes
 		</p>
 	</main>
 
