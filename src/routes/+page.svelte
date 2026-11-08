@@ -57,7 +57,7 @@
 					'https://github.com/pulse-global',
 					'https://x.com/pulse_city_',
 					'https://www.instagram.com/pulse_city/',
-					'https://www.facebook.com/profile.php?id=61557967872261'
+					'https://www.facebook.com/pulseglobalbv'
 				]
 			},
 			founder,
