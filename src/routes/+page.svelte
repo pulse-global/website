@@ -128,7 +128,9 @@
 			<a
 				class="block opacity-80 outline-offset-4 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-1 focus-visible:outline-primary"
 				href="https://github.com/pulse-global"
-				aria-label="Pulse Global on GitHub"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="Pulse Global on GitHub (opens in a new tab)"
 				title="Pulse Global on GitHub"
 			>
 				<!-- GitHub mark -->
