@@ -7,6 +7,7 @@ Company details, as published in the site footer:
 - Legal name: Pulse Global BV (a Belgian private limited company)
 - Founder: Lukas D'Hondt
 - Founded: 4 April 2024
+- Funding: €500,000 seed capital at founding (April 2024)
 - What it does:
   - Products: SaaS it builds, runs and stands behind
   - Custom software: built around how a business actually works
@@ -20,6 +21,7 @@ Company details, as published in the site footer:
 ## Site
 
 - [Home](https://pulse.city/): The landing page itself.
+- [News](https://pulse.city/news): Company news, including the founding with €500,000 in seed capital (4 April 2024).
 - [Source code](https://github.com/pulse-global/website): The site's public repository.
 
 ## Official profiles
