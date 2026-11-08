@@ -140,6 +140,10 @@
 }
 
 /*
+ * Boot keyframes start at opacity 0.01, not 0: content that is only ever revealed by compositor
+ * animations from opacity 0 never registers as painted, so browsers record no First Contentful
+ * Paint (Lighthouse fails with NO_FCP). 1% is invisible on black but counts as painted.
+ *
  * Boot sequence, once per page load (~1.6 s): the top hairline draws in from the left and the footer
  * rule from the centre, the panel drops in and its label types out, the brackets close in from
  * the corners, then the wordmark switches on like a CRT (a bright line that opens up, flickers and
@@ -200,7 +204,7 @@
 
 @keyframes boot-drop {
 	from {
-		opacity: 0;
+		opacity: 0.01;
 		transform: translateY(-100%);
 	}
 	to {
@@ -220,7 +224,7 @@
 
 @keyframes boot-fade {
 	from {
-		opacity: 0;
+		opacity: 0.01;
 	}
 	to {
 		opacity: 1;
@@ -229,7 +233,7 @@
 
 @keyframes boot-brackets {
 	from {
-		opacity: 0;
+		opacity: 0.01;
 		transform: scale(1.08);
 	}
 	to {
@@ -241,7 +245,7 @@
 /* CRT switch-on: a thin bright line, opening to full height, a couple of flickers, then steady. */
 @keyframes boot-crt {
 	0% {
-		opacity: 0;
+		opacity: 0.01;
 		transform: scale(1.3, 0.01);
 		filter: brightness(1.6);
 	}
