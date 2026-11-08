@@ -14,6 +14,66 @@
 	const title = 'Pulse Global';
 	const description = 'Pulse Global BV builds software that breathes, from Ghent, Belgium.';
 
+	// schema.org facts for search engines and AI crawlers: who the company is, its official
+	// profiles (sameAs) and its founder. Keep it in line with llms.txt and the profiles themselves.
+	const founder = {
+		'@type': 'Person',
+		'@id': `${site}/#lukas`,
+		name: "Lukas D'Hondt",
+		jobTitle: 'Founder',
+		worksFor: { '@id': `${site}/#org` },
+		sameAs: [
+			'https://www.linkedin.com/in/lukasdhondt',
+			'https://github.com/xylys',
+			'https://x.com/xylys'
+		]
+	};
+	const structuredData = {
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'Organization',
+				'@id': `${site}/#org`,
+				name: 'Pulse Global',
+				legalName: company.name,
+				url: `${site}/`,
+				logo: { '@type': 'ImageObject', url: `${site}/logo.png`, width: 512, height: 512 },
+				image: `${site}/og.png`,
+				slogan: 'Software that breathes',
+				description:
+					'Pulse Global builds software from Ghent, Belgium. We make our own software and SaaS products, build bespoke software for companies, offer technology consulting, and experiment with new technology.',
+				foundingDate: '2024-04-04',
+				vatID: 'BE1008017466',
+				address: {
+					'@type': 'PostalAddress',
+					streetAddress: company.street,
+					postalCode: '9000',
+					addressLocality: 'Ghent',
+					addressCountry: 'BE'
+				},
+				founder: { '@id': founder['@id'] },
+				sameAs: [
+					'https://www.linkedin.com/company/pulseglobal',
+					'https://github.com/pulse-global',
+					'https://x.com/pulse_city_',
+					'https://www.instagram.com/pulse_city/'
+				]
+			},
+			founder,
+			{
+				'@type': 'WebSite',
+				'@id': `${site}/#website`,
+				url: `${site}/`,
+				name: title,
+				publisher: { '@id': `${site}/#org` }
+			}
+		]
+	};
+	// Escape "<" so the JSON can never close the script tag early.
+	const jsonLd =
+		`<script type="application/ld+json">${JSON.stringify(structuredData).replace(/</g, '\\u003c')}</` +
+		'script>';
+
 	// Assembled in the browser only, from reversed pieces and char codes, so neither the HTML nor
 	// the JS bundle contains the address, an @, or the link scheme. Comments and local names are
 	// stripped by the build; only the strings below ship.
@@ -45,6 +105,10 @@
 	<meta property="og:image:height" content="630" />
 	<meta property="og:image:alt" content="PULSE: software that breathes" />
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@pulse_city_" />
+
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -- static JSON built above, not user input -->
+	{@html jsonLd}
 </svelte:head>
 
 <div

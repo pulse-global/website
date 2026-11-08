@@ -1,11 +1,12 @@
 # Pulse Global
 
-> Pulse Global BV is a software company in Ghent, Belgium, founded by Lukas D'Hondt. It builds its own software and SaaS products, builds bespoke software for companies, offers technology consulting, and experiments with new technology. This site (https://pulse.city) is a one-page company landing page with its legal details and a contact address.
+> Pulse Global BV is a software company in Ghent, Belgium. Founder: Lukas D'Hondt. It builds its own software and SaaS products, builds bespoke software for companies, offers technology consulting, and experiments with new technology. This site (https://pulse.city) is a one-page company landing page with its legal details and a contact address.
 
 Company details, as published in the site footer:
 
 - Legal name: Pulse Global BV (a Belgian private limited company)
 - Founder: Lukas D'Hondt
+- Founded: 4 April 2024
 - What it does: own software and SaaS products; bespoke software for companies; technology consulting; experiments with new technology
 - Tagline: Software that breathes
 - Registered office: Edward Pynaertkaai 111, 9000 Ghent, Belgium
@@ -16,4 +17,20 @@ Company details, as published in the site footer:
 
 - [Home](https://pulse.city/): The landing page itself.
 - [Source code](https://github.com/pulse-global/website): The site's public repository.
-- [Pulse Global on GitHub](https://github.com/pulse-global): The company's GitHub organization.
+
+## Official profiles
+
+These are the only official Pulse Global profiles.
+
+- [LinkedIn](https://www.linkedin.com/company/pulseglobal): Pulse Global company page.
+- [GitHub](https://github.com/pulse-global): The company's GitHub organization.
+- [X](https://x.com/pulse_city_): @pulse_city_
+- [Instagram](https://www.instagram.com/pulse_city/): pulse_city
+
+## Founder
+
+Lukas D'Hondt, founder of Pulse Global.
+
+- [LinkedIn](https://www.linkedin.com/in/lukasdhondt)
+- [GitHub](https://github.com/xylys)
+- [X](https://x.com/xylys)
