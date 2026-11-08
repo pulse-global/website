@@ -1,13 +1,17 @@
 # Pulse Global
 
-> Pulse Global BV is a software company in Ghent, Belgium. Founder: Lukas D'Hondt. It builds its own software and SaaS products, builds bespoke software for companies, offers technology consulting, and experiments with new technology. This site (https://pulse.city) is a one-page company landing page with its legal details and a contact address.
+> Pulse Global BV is a software company in Ghent, Belgium. Founder: Lukas D'Hondt. It builds and runs its own SaaS products, creates custom software around how businesses actually work, and gives clear technical advice from strategy to code. In its lab it tests new technology first, so its clients don't have to. This site (https://pulse.city) is a one-page company landing page with its legal details and a contact address.
 
 Company details, as published in the site footer:
 
 - Legal name: Pulse Global BV (a Belgian private limited company)
 - Founder: Lukas D'Hondt
 - Founded: 4 April 2024
-- What it does: own software and SaaS products; bespoke software for companies; technology consulting; experiments with new technology
+- What it does:
+  - Products: SaaS it builds, runs and stands behind
+  - Custom software: built around how a business actually works
+  - Consulting: clear technical advice, from strategy to code
+  - Lab: tests new technology first, so clients don't have to
 - Tagline: Software that breathes
 - Registered office: Edward Pynaertkaai 111, 9000 Ghent, Belgium
 - Enterprise and VAT number: BE 1008.017.466 (RPR Ghent, division Ghent)

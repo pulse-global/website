@@ -41,7 +41,7 @@
 				image: `${site}/og.png`,
 				slogan: 'Software that breathes',
 				description:
-					'Pulse Global builds software from Ghent, Belgium. We make our own software and SaaS products, build bespoke software for companies, offer technology consulting, and experiment with new technology.',
+					"Pulse Global is a software company in Ghent, Belgium. We build and run our own SaaS products, create custom software around how businesses actually work, and give clear technical advice from strategy to code. In our lab we test new technology first, so our clients don't have to.",
 				foundingDate: '2024-04-04',
 				vatID: 'BE1008017466',
 				address: {
