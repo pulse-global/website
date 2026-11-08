@@ -57,7 +57,11 @@
 					'https://github.com/pulse-global',
 					'https://x.com/pulse_city_',
 					'https://www.instagram.com/pulse_city/',
-					'https://www.facebook.com/pulseglobalbv'
+					'https://www.facebook.com/pulseglobalbv',
+					'https://www.threads.com/@pulse_city',
+					'https://bsky.app/profile/pulse.city',
+					'https://www.youtube.com/@pulseglobalhq',
+					'https://www.crunchbase.com/organization/pulse-global'
 				]
 			},
 			founder,
