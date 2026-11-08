@@ -112,7 +112,7 @@
 	</main>
 
 	<footer
-		class="relative mx-4 mb-4 flex flex-col gap-4 pt-4 text-xs text-primary/60 sm:mx-8 sm:mb-6 sm:flex-row sm:items-end sm:justify-between"
+		class="relative mx-4 mb-4 flex flex-col gap-4 pt-4 text-xs text-primary/80 sm:mx-8 sm:mb-6 sm:flex-row sm:items-end sm:justify-between"
 	>
 		<div class="boot-line-center absolute inset-x-0 top-0 h-px bg-primary/25" aria-hidden="true">
 			<span class="absolute top-0 left-0 h-2 w-px bg-primary/70"></span>
