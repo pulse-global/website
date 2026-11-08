@@ -124,17 +124,32 @@
 			<p>{company.name} · {company.street}, {company.city}</p>
 			<p>VAT {company.vat} · {company.register}</p>
 		</div>
-		<p class="boot-fade boot-late text-sm text-primary">
-			{#if reach}
-				<!-- eslint-disable svelte/no-navigation-without-resolve -- external link, not a route -->
-				<a
-					class="outline-offset-4 hover:underline focus-visible:underline focus-visible:outline-1 focus-visible:outline-primary"
-					href={reach.href}>{reach.text}</a
-				>
-				<!-- eslint-enable svelte/no-navigation-without-resolve -->
-			{:else}
-				{fallback}
-			{/if}
-		</p>
+		<div class="boot-fade boot-late flex items-center gap-4 text-sm text-primary">
+			<a
+				class="block opacity-80 outline-offset-4 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-1 focus-visible:outline-primary"
+				href="https://github.com/pulse-global"
+				aria-label="Pulse Global on GitHub"
+				title="Pulse Global on GitHub"
+			>
+				<!-- GitHub mark -->
+				<svg class="size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+					<path
+						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+					/>
+				</svg>
+			</a>
+			<p>
+				{#if reach}
+					<!-- eslint-disable svelte/no-navigation-without-resolve -- external link, not a route -->
+					<a
+						class="outline-offset-4 hover:underline focus-visible:underline focus-visible:outline-1 focus-visible:outline-primary"
+						href={reach.href}>{reach.text}</a
+					>
+					<!-- eslint-enable svelte/no-navigation-without-resolve -->
+				{:else}
+					{fallback}
+				{/if}
+			</p>
+		</div>
 	</footer>
 </div>

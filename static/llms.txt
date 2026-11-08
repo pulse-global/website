@@ -5,6 +5,7 @@
 Company details, as published in the site footer:
 
 - Legal name: Pulse Global BV (a Belgian private limited company)
+- Founded by: Lukas D'Hondt
 - Registered office: Edward Pynaertkaai 111, 9000 Ghent, Belgium
 - Enterprise and VAT number: BE 1008.017.466 (RPR Ghent, division Ghent)
 - Contact: info at pulse.city (written out to avoid scrapers; replace " at " with "@")
@@ -12,3 +13,5 @@ Company details, as published in the site footer:
 ## Site
 
 - [Home](https://pulse.city/): The landing page itself.
+- [Source code](https://github.com/pulse-global/website): The site's public repository.
+- [Pulse Global on GitHub](https://github.com/pulse-global): The company's GitHub organization.
