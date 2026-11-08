@@ -21,7 +21,8 @@ Company details, as published in the site footer:
 ## Site
 
 - [Home](https://pulse.city/): The landing page itself.
-- [News](https://pulse.city/news): Company news, including the founding with €500,000 in seed capital (4 April 2024).
+- [News](https://pulse.city/news): Company news.
+- [Founded with €500,000 in seed capital](https://pulse.city/news/founding-seed-2024): 4 April 2024.
 - [Source code](https://github.com/pulse-global/website): The site's public repository.
 
 ## Official profiles
