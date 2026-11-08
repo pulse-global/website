@@ -13,7 +13,28 @@ export default defineConfig({
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
 
-			adapter: adapter()
+			adapter: adapter(),
+
+			// The stylesheet is small; inlining it removes a render-blocking request.
+			inlineStyleThreshold: 16384,
+
+			// Prerendered, so Kit writes this as a <meta> CSP with hashes of its own inline scripts.
+			// Header-only directives (frame-ancestors etc.) are in static/_headers. The Cloudflare
+			// entries are for the Web Analytics beacon Cloudflare injects into the page.
+			csp: {
+				mode: 'hash',
+				directives: {
+					'default-src': ['self'],
+					'script-src': ['self', 'https://static.cloudflareinsights.com'],
+					'style-src': ['self', 'unsafe-inline'],
+					'img-src': ['self', 'data:'],
+					'font-src': ['self'],
+					'connect-src': ['self', 'https://cloudflareinsights.com'],
+					'object-src': ['none'],
+					'base-uri': ['none'],
+					'form-action': ['none']
+				}
+			}
 		})
 	]
 });

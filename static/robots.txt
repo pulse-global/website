@@ -1,3 +1,5 @@
-# allow crawling everything by default
+# Everything on this site is public; all crawlers, including AI agents, are welcome.
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://pulse.city/sitemap.xml

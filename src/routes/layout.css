@@ -43,8 +43,26 @@
 		animation: breath-glow var(--breath) ease-in-out var(--boot) infinite both;
 	}
 
+	/*
+	 * The peak look (lighter colour and a wide glow) is drawn once on a copy of the word laid over
+	 * it, and only that copy's opacity is animated, so the browser can composite it instead of
+	 * repainting text-shadow every frame.
+	 */
 	.breath-text {
-		animation: breath-text var(--breath) ease-in-out var(--boot) infinite both;
+		position: relative;
+		text-shadow: 0 0 0.08em rgb(255 109 4 / 0.25);
+	}
+	.breath-text::after {
+		content: attr(data-text) / ''; /* empty alt text: screen readers skip the copy */
+		position: absolute;
+		inset: 0;
+		color: color-mix(in oklab, var(--color-primary), white 25%);
+		text-shadow:
+			0 0 0.12em rgb(255 109 4 / 0.7),
+			0 0 0.6em rgb(255 109 4 / 0.4),
+			0 0 1.6em rgb(255 109 4 / 0.3);
+		pointer-events: none;
+		animation: breath-peak var(--breath) ease-in-out var(--boot) infinite both;
 	}
 
 	.breath-dot,
@@ -109,11 +127,14 @@
 
 	@media (prefers-reduced-motion: reduce) {
 		.breath,
-		.breath-text,
+		.breath-text::after,
 		.breath-dot,
 		.hud-line,
 		.bracket {
 			animation: none;
+		}
+		.breath-text::after {
+			opacity: 0.5;
 		}
 	}
 }
@@ -268,18 +289,13 @@
 	}
 }
 
-@keyframes breath-text {
+@keyframes breath-peak {
 	0%,
 	100% {
-		text-shadow: 0 0 0.08em rgb(255 109 4 / 0.25);
+		opacity: 0;
 	}
 	40% {
-		/* Lighten towards white as the glow peaks so the word stays crisp against it. */
-		color: color-mix(in oklab, var(--color-primary), white 25%);
-		text-shadow:
-			0 0 0.12em rgb(255 109 4 / 0.7),
-			0 0 0.6em rgb(255 109 4 / 0.4),
-			0 0 1.6em rgb(255 109 4 / 0.3);
+		opacity: 1;
 	}
 }
 

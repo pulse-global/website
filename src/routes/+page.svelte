@@ -104,7 +104,9 @@
 		</div>
 
 		<div class="boot-crt">
-			<h1 class="breath-text text-7xl font-extrabold sm:text-8xl lg:text-9xl">Pulse</h1>
+			<h1 class="breath-text text-7xl font-extrabold sm:text-8xl lg:text-9xl" data-text="Pulse">
+				Pulse
+			</h1>
 		</div>
 		<p class="boot-fade boot-late text-sm tracking-[0.25em] text-primary/80 sm:text-base">
 			Software that breathes
@@ -124,8 +126,12 @@
 		</div>
 		<p class="boot-fade boot-late text-sm text-primary">
 			{#if reach}
-				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- external link, not a route -->
-				<a class="hover:underline" href={reach.href}>{reach.text}</a>
+				<!-- eslint-disable svelte/no-navigation-without-resolve -- external link, not a route -->
+				<a
+					class="outline-offset-4 hover:underline focus-visible:underline focus-visible:outline-1 focus-visible:outline-primary"
+					href={reach.href}>{reach.text}</a
+				>
+				<!-- eslint-enable svelte/no-navigation-without-resolve -->
 			{:else}
 				{fallback}
 			{/if}

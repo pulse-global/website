@@ -1,0 +1,14 @@
+# Pulse Global
+
+> Pulse Global BV is a software company in Ghent, Belgium. This site (https://pulse.city) is a one-page company landing page: name, tagline ("Software that breathes"), legal details and a contact address. It has no API, documentation or product pages.
+
+Company details, as published in the site footer:
+
+- Legal name: Pulse Global BV (a Belgian private limited company)
+- Registered office: Edward Pynaertkaai 111, 9000 Ghent, Belgium
+- Enterprise and VAT number: BE 1008.017.466 (RPR Ghent, division Ghent)
+- Contact: info at pulse.city (written out to avoid scrapers; replace " at " with "@")
+
+## Site
+
+- [Home](https://pulse.city/): The landing page itself.
