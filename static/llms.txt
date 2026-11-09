@@ -22,6 +22,7 @@ Company details, as published in the site footer:
 
 - [Home](https://pulse.city/): The landing page itself.
 - [News](https://pulse.city/news): Company news.
+- [Lukas D'Hondt](https://pulse.city/lukas): The founder's profile page.
 - [Founded with €500,000 in seed capital](https://pulse.city/news/founding-seed-2024): 4 April 2024.
 - [Source code](https://github.com/pulse-global/website): The site's public repository.
 
@@ -42,7 +43,7 @@ These are the only official Pulse Global profiles.
 
 ## Founder
 
-Lukas D'Hondt, founder of Pulse Global.
+Lukas D'Hondt, founder of Pulse Global. Profile page: [pulse.city/lukas](https://pulse.city/lukas).
 
 - [LinkedIn](https://www.linkedin.com/in/lukasdhondt)
 - [GitHub](https://github.com/xylys)
