@@ -7,7 +7,7 @@ export type NewsItem = {
 	/** The date the news is about, shown on the page. */
 	eventDate: string;
 	eventIso: string;
-	/** When the page itself was published (ISO date and label). */
+	/** When the page itself was published (ISO datetime with time zone, and a label). */
 	published: string;
 	publishedLabel: string;
 	body: string[];
@@ -21,7 +21,7 @@ export const news: NewsItem[] = [
 			'Pulse Global BV was founded in Ghent, Belgium, on 4 April 2024, with €500,000 in seed capital.',
 		eventDate: '4 April 2024',
 		eventIso: '2024-04-04',
-		published: '2026-11-09',
+		published: '2026-11-09T09:00:00+01:00',
 		publishedLabel: '9 November 2026',
 		body: [
 			'Pulse Global BV was founded in Ghent, Belgium, on 4 April 2024, with €500,000 in seed capital.',
