@@ -61,6 +61,7 @@
 					'https://www.threads.com/@pulse_city',
 					'https://bsky.app/profile/pulse.city',
 					'https://www.youtube.com/@pulseglobalhq',
+					'https://www.tiktok.com/@pulseglobalhq',
 					'https://www.crunchbase.com/organization/pulse-global'
 				]
 			},
